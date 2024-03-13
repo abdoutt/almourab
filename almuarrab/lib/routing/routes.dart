@@ -12,7 +12,6 @@ import 'package:almuarrab/view/origins_dictionary_words.dart';
 import 'package:almuarrab/view/search_port_view.dart';
 import 'package:almuarrab/view/word_origin_detail_view.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 const homeRoute = "/home";
 const aboutRoute = "/about";

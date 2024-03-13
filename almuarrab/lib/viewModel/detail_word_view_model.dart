@@ -10,6 +10,8 @@ class DetailWordViewModel extends BaseGetxController {
   late Map<String, dynamic> wordDate;
   RouteArguments? args;
   setContext(BuildContext cont) async {
+     isBusy.value = true;
+    wordDate = {};
     args = ModalRoute.of(cont)!.settings.arguments as RouteArguments;
     if (args == null) {
       return;
@@ -29,9 +31,9 @@ class DetailWordViewModel extends BaseGetxController {
 
   Future<void> share() async {
     await FlutterShare.share(
-      title: "${"الكلمة""\n" + args!.title}",
+      title: "${"الكلمة" "\n" + args!.title}",
       text:
-          "${"الكلمة""\n" + args!.title+"\n"+"\n"+wordDate["explanation"] + "\n" + "\n" + "أصل الكلمة" + "\n" + wordDate["origin"]}\n\nصفحة تواجدها\n" +
+          "${"الكلمة" "\n" + args!.title + "\n" + "\n" + wordDate["explanation"] + "\n" + "\n" + "أصل الكلمة" + "\n" + wordDate["origin"]}\n\nصفحة تواجدها\n" +
               wordDate["pagePresence"],
     );
   }

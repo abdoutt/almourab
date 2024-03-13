@@ -1,8 +1,6 @@
-import 'package:almuarrab/constants/constants.dart';
+
 import 'package:almuarrab/constants/controllers.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import '../../routing/routes.dart';
 
 AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>

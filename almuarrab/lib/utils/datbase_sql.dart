@@ -25,7 +25,9 @@ class DBHelper {
             wordWithoutDiacritics TEXT,
             wordWithDiacritics TEXT,
             explanation TEXT,
+            htmlText TEXT,
             origin TEXT,
+            notes TEXT,
             pagePresence TEXT
           )
         ''');
@@ -50,6 +52,7 @@ class DBHelper {
     final List<Map<String, dynamic>> result = await db.rawQuery('''
       SELECT chapter, COUNT(*) as count
       FROM entries
+      where chapter !="null"
       GROUP BY chapter
     ''');
     return result;
@@ -93,7 +96,7 @@ class DBHelper {
     List<Map<String, dynamic>> originCounts = await db.rawQuery('''
       SELECT origin, COUNT(origin) AS count
       FROM entries
-      WHERE chapter = ?
+      WHERE origin !="null" AND origin !=" " AND chapter = ?
       GROUP BY origin
       ORDER BY count DESC;
     ''', [chapter]);
@@ -115,7 +118,7 @@ class DBHelper {
     final db = await database;
     List<Map<String, dynamic>> results = await db.query(
       'entries', // Assuming 'entries' is the name of your table
-      columns: ['explanation', 'pagePresence', 'origin'],
+      columns: ['htmlText', 'pagePresence', 'origin'],
       where: 'wordWithDiacritics = ?',
       whereArgs: [wordWithDiacritics],
     );
@@ -159,31 +162,37 @@ class DBHelper {
   }
 
   Future<List<Map<String, dynamic>>> searchDatabase(String searchTerm) async {
-    final db = await database;
+    final db =
+        await database; // Ensure this is your correctly initialized database object.
 
-    // Define the columns to search
+    // Define the columns to search and also to retrieve in the result.
     List<String> columns = [
-      'reference',
-      'number',
       'chapter',
       'wordWithoutDiacritics',
       'wordWithDiacritics',
-      'explanation',
       'origin',
       'pagePresence'
     ];
 
-    // Prepare the query
-    String query =
-        columns.map((column) => "$column LIKE '%$searchTerm%'").join(' OR ');
+    // Convert columns list into a comma-separated string for the SELECT statement.
+    String columnsForSelect = columns.join(', ');
 
-    // Execute the query
-    List<Map<String, dynamic>> results = await db.query(
-      'entries',
-      where: query,
+    // Prepare the query with placeholders for the WHERE clause.
+    String whereClause = columns.map((column) => "$column LIKE ?").join(' OR ');
+
+    // Prepare the arguments for the query. Each ? will be replaced by these values in order.
+    List<String> whereArgs =
+        List<String>.generate(columns.length, (_) => '%$searchTerm%');
+
+    // Use rawQuery with parameterized inputs, specifying only the desired columns in the SELECT part.
+    String rawQuery =
+        'SELECT $columnsForSelect FROM entries WHERE $whereClause';
+
+    List<Map<String, dynamic>> results = await db.rawQuery(
+      rawQuery,
+      whereArgs,
     );
 
     return results;
   }
-
 }

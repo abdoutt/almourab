@@ -1,11 +1,9 @@
-import 'package:almuarrab/constants/constants.dart';
-import 'package:almuarrab/constants/controllers.dart';
-import 'package:almuarrab/viewModel/chapter_view_model.dart';
 import 'package:almuarrab/viewModel/detail_word_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:get/get.dart';
-import 'package:responsive_grid/responsive_grid.dart';
+import 'package:html/parser.dart';
 
 class WordDetailView extends StatelessWidget {
   WordDetailView({super.key}) {
@@ -68,6 +66,7 @@ class WordDetailView extends StatelessWidget {
                         height: 15,
                       ),
                       Container(
+                        padding: EdgeInsets.only(right: 10, top: 10, bottom: 10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(7),
                             color: Colors.white),
@@ -79,10 +78,9 @@ class WordDetailView extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10.0, vertical: 10),
-                                child: Text(
-                                  viewModel.wordDate["explanation"],
-                                  style: TextStyle(
-                                      fontSize: 20, color: Colors.black54),
+                                child: HtmlWidget(
+                                  viewModel.wordDate["htmlText"],
+                                  textStyle: TextStyle(color: Colors.black54),
                                 ),
                               ),
                             ),
@@ -113,10 +111,12 @@ class WordDetailView extends StatelessWidget {
                                     SizedBox(
                                       height: 2,
                                     ),
-                                    Text(
-                                      viewModel.wordDate["origin"],
+                                   Text(
+                                     viewModel.wordDate["origin"] ?? "اصلها مفقود",
                                       style: TextStyle(
-                                          fontSize: 20, color: Colors.black54),
+                                        fontSize: 20,
+                                        color: Colors.black54,
+                                      ),
                                     ),
                                   ],
                                 ),

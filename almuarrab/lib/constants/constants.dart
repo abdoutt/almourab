@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 Color primaryColor = const Color(0xFFA18453);
 Color primaryColor30 = const Color(0xFFA18453).withOpacity(0.03);
@@ -77,7 +78,7 @@ String getChapterString(String value) {
     case "باب الياء":
       return "ي";
     default:
-      throw Exception('No chapter string found for value $value');
+      return value;
   }
 }
 
@@ -96,8 +97,12 @@ String getStatusString(String value) {
 
     case "explanation":
       return "شرحها";
+    case "htmlText":
+      return "شرحها";
     case "origin":
       return "أصلها";
+    case "notes":
+      return "اضافة";
     case "pagePresence":
       return "صفحة تواجدها";
 
@@ -106,5 +111,9 @@ String getStatusString(String value) {
   }
 }
 
-
-
+Future<void> requestPermissions() async {
+  final status = await Permission.microphone.request();
+  if (status != PermissionStatus.granted) {
+    throw Exception('Microphone permission not granted');
+  }
+}

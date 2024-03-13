@@ -1,4 +1,3 @@
-
 import 'package:almuarrab/constants/controllers.dart';
 import 'package:almuarrab/core/text_search_view.dart';
 import 'package:almuarrab/routing/routes.dart';
@@ -19,11 +18,15 @@ class ChapterView extends StatelessWidget {
     viewModel.setContext(context);
     return Column(
       children: [
-         Text(viewModel.args!.title, style: TextStyle(fontSize: 30),),
-       
-          SearchItemView(),
-     
-       SizedBox(
+        Container(
+          color: Colors.red,
+          child: Text(
+            viewModel.args!.title,
+            style: const TextStyle(fontSize: 30),
+          ),
+        ),
+        const SearchItemView(),
+        const SizedBox(
           height: 7,
         ),
         Obx(() => Container(
@@ -39,8 +42,8 @@ class ChapterView extends StatelessWidget {
                               viewModel.wordsOrigine[index]['origin']);
                         },
                         child: Container(
-                          padding: EdgeInsets.all(8.0),
-                          margin: EdgeInsets.symmetric(horizontal: 5),
+                          padding: const EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.symmetric(horizontal: 5),
                           decoration: BoxDecoration(
                               border: Border(
                                   bottom: BorderSide(
@@ -58,9 +61,9 @@ class ChapterView extends StatelessWidget {
                                 viewModel.wordsOrigine[index]['origin'] == ""
                                     ? "لايوجد أصلها"
                                     : viewModel.wordsOrigine[index]['origin'],
-                                style: TextStyle(fontSize: 16),
+                                style: const TextStyle(fontSize: 16),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 3,
                               ),
                               Container(
@@ -76,7 +79,7 @@ class ChapterView extends StatelessWidget {
                                 child: Center(
                                   child: Text(
                                     "${viewModel.wordsOrigine[index]['count']}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 12, color: Colors.white),
                                   ),
                                 ),
@@ -88,18 +91,17 @@ class ChapterView extends StatelessWidget {
                 },
               ),
             )),
-      
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Obx(() => viewModel.isBusy.value
-            ? Expanded(
-              child: Center(
-                  child: SpinKitCircle(
+            ? const Expanded(
+                child: Center(
+                    child: SpinKitCircle(
                   color: Colors.amber,
                   size: 30.0,
                 )),
-            )
+              )
             : Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
@@ -122,9 +124,9 @@ class ChapterView extends StatelessWidget {
                                   arg: args);
                             },
                             child: Container(
-                                margin: EdgeInsets.symmetric(
+                                margin: const EdgeInsets.symmetric(
                                     vertical: 7, horizontal: 3),
-                                padding: EdgeInsets.symmetric(vertical: 10.0),
+                                padding: const EdgeInsets.symmetric(vertical: 10.0),
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(8)),
@@ -132,7 +134,7 @@ class ChapterView extends StatelessWidget {
                                   children: [
                                     Text(
                                       viewModel.wordsFuture[i],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 20,
                                       ),
                                     ),

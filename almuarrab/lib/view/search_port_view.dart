@@ -3,10 +3,8 @@ import 'package:almuarrab/constants/controllers.dart';
 import 'package:almuarrab/core/text_search_view.dart';
 import 'package:almuarrab/model/chepiter_model.dart';
 import 'package:almuarrab/utils/datbase_sql.dart';
-import 'package:almuarrab/view/chapter_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get.dart';
 
 import 'package:responsive_grid/responsive_grid.dart';
 
