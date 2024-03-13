@@ -126,6 +126,19 @@ class DBHelper {
     return results; // This list may contain multiple entries if the word occurs more than once with different origins
   }
 
+    Future<List<Map<String, dynamic>>> getDetailsByWordWithOutDiacritics(
+      String wordWithoutDiacritics) async {
+    final db = await database;
+    List<Map<String, dynamic>> results = await db.query(
+      'entries', // Assuming 'entries' is the name of your table
+      columns: ['htmlText', 'pagePresence', 'origin'],
+      where: 'wordWithoutDiacritics = ?',
+      whereArgs: [wordWithoutDiacritics],
+    );
+
+    return results; // This list may contain multiple entries if the word occurs more than once with different origins
+  }
+
   Future<List<Map<String, dynamic>>> getOriginCounts() async {
     final db = await database;
     // Perform a query to count each unique origin

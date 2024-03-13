@@ -143,10 +143,17 @@ class _SearchItemViewState extends State<SearchItemView> {
                             menuController.changeActiveItemTo(1);
                             RouteArguments args = RouteArguments(
                                 foundInColumns[i].body, foundInColumns[i].body);
-                            navigationController.navigateTo(detailWordRout,
+                            navigationController.navigateTo(detailWordOutRout,
                                 arg: args);
                           }
                           if (foundInColumns[i].title == "pagePresence") {}
+                          if (foundInColumns[i].title == "origin") {
+                            menuController.changeActiveItemTo(0);
+                            RouteArguments args = RouteArguments(
+                                foundInColumns[i].body, foundInColumns[i].body);
+                            navigationController.navigateTo(originWordsRout,
+                                arg: args);
+                          }
                         },
                         child: Container(
                           padding: const EdgeInsets.all(7.0),

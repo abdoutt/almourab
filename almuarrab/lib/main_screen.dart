@@ -48,10 +48,7 @@ class Layout extends StatelessWidget {
                 }
                 return true; // Exit app if no navigation history is present
               },
-              child: Padding(
-                padding: const EdgeInsets.only(top: 80.0),
-                child: localNavigator(routeName),
-              ))),
+              child: localNavigator(routeName))),
       bottomNavigationBar: Obx(() => BottomNavigationBar(
             items: getMenuRole()
                 .map(

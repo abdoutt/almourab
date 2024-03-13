@@ -3,7 +3,8 @@ import 'package:almuarrab/view/auteur_dictionary.dart';
 import 'package:almuarrab/view/browse_dictionary_view.dart';
 import 'package:almuarrab/view/chapter_view.dart';
 import 'package:almuarrab/view/description_dictionary.dart';
-import 'package:almuarrab/view/detail_word_view.dart';
+import 'package:almuarrab/view/detail_word_withTa_view.dart';
+import 'package:almuarrab/view/detail_word_without_view.dart';
 import 'package:almuarrab/view/home_view.dart';
 import 'package:almuarrab/view/introduction_dictionary.dart';
 import 'package:almuarrab/view/introduction_dictionary_letter.dart';
@@ -22,6 +23,7 @@ const introductionDictionaryLetterRout = "/introduction_dictionary_letter";
 const introductionDictionaryPortRout = "/introduction_dictionary_port";
 const chapterRout = "/chapter";
 const detailWordRout = "/word_detail";
+const detailWordOutRout = "/wordout_detail";
 const pageNotFoundRoute = "/404";
 const browseDictionary = "/browse_dictionary";
 const originWordsRout = "/origin_words";
@@ -58,6 +60,8 @@ int getRoutIndex(String routeName) {
       return 5;
     case detailWordRout:
       return 6;
+      case detailWordOutRout:
+      return 13;
     case browseDictionary:
       return 7;
     case introductionDictionaryPortRout:
@@ -92,6 +96,8 @@ String getRoutName(int routeIndex) {
       return chapterRout;
     case 6:
       return detailWordRout;
+      case 13:
+      return detailWordOutRout;
     case 7:
       return browseDictionary;
     case 8:
@@ -127,6 +133,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(ChapterView(), settings);
     case detailWordRout:
       return _getPageRoute(WordDetailView(), settings);
+       case detailWordOutRout:
+      return _getPageRoute(WordDetailWithoutView(), settings);
     case browseDictionary:
       return _getPageRoute(BrowseDictionary(), settings);
 
