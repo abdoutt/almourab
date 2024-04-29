@@ -22,10 +22,12 @@ class DetailWordOriginView extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            viewModel.args!.title,
+            viewModel.args!.title == "null"
+                ? "لم يذكر المؤلف أصلها"
+                : viewModel.args!.title,
             style: TextStyle(fontSize: 30),
           ),
-           SizedBox(
+          SizedBox(
             height: 20,
           ),
           SearchItemView(),

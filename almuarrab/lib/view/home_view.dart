@@ -10,7 +10,6 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_file_saver/flutter_file_saver.dart';
 import 'package:get/get.dart';
 
-
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -25,7 +24,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8.0),
-      margin:  const EdgeInsets.only(top: 80.0),
+      margin: const EdgeInsets.only(top: 80.0),
       child: Column(
         children: [
           SearchItemView(),
@@ -93,12 +92,29 @@ class _HomeViewState extends State<HomeView> {
                           builder: (BuildContext context) {
                             donload() async {
                               var data = await rootBundle
-                                  .load("assets/file/almuarrabdic.pdf");
+                                  .load("assets/file/alm1.pdf");
                               final buffer = data.buffer;
 
                               Uint8List byte = buffer.asUint8List(
                                   data.offsetInBytes, data.lengthInBytes);
-                              String file = "almuarrab.pdf";
+                              String file = " المعرّب للجواليقي.pdf";
+                              setState(() {
+                                isdownload = true;
+                              });
+                              FlutterFileSaver().writeFileAsBytes(
+                                fileName: file,
+                                bytes: byte,
+                              );
+                            }
+
+                            donloadorigine() async {
+                              var data = await rootBundle
+                                  .load("assets/file/alm2.pdf");
+                              final buffer = data.buffer;
+
+                              Uint8List byte = buffer.asUint8List(
+                                  data.offsetInBytes, data.lengthInBytes);
+                              String file = "كتاب المعرّب للجوليقي الأصلي.pdf";
                               setState(() {
                                 isdownload = true;
                               });
@@ -187,7 +203,19 @@ class _HomeViewState extends State<HomeView> {
                                             ItemHome(
                                               imageItem:
                                                   "assets/icons/download_icon2.png",
-                                              title: "تحميل المعجم PDF",
+                                              title: "تحميل المعجم مخطوط",
+                                              color: ligtColor,
+                                              tapfunction: () {
+                                                donloadorigine();
+                                              },
+                                            ),
+                                            SizedBox(
+                                              height: 15,
+                                            ),
+                                            ItemHome(
+                                              imageItem:
+                                                  "assets/icons/download_icon2.png",
+                                              title: "تحميل المعجم بصغة pdf",
                                               color: ligtColor,
                                               tapfunction: () {
                                                 donload();

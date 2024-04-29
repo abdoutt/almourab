@@ -4,20 +4,7 @@ import 'package:almuarrab/constants/constants.dart';
 import 'package:almuarrab/constants/controllers.dart';
 import 'package:almuarrab/routing/routes.dart';
 import 'package:almuarrab/utils/datbase_sql.dart';
-import 'package:audio_session/audio_session.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_sound/flutter_sound.dart';
-import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:flutter_sound_platform_interface/flutter_sound_recorder_platform_interface.dart';
-
-import '../view/widgets/simple_recorder.dart';
-
-typedef _Fn = void Function();
-const theSource = AudioSource.microphone;
 
 class SearchItemView extends StatefulWidget {
   const SearchItemView({super.key});
@@ -75,6 +62,12 @@ class _SearchItemViewState extends State<SearchItemView> {
             (BuildContext context, MenuController controller, Widget? child) {
           return TextField(
             controller: filter,
+            onSubmitted: (value) {
+              search(controller);
+            },
+            onChanged: (val) {
+              search(controller);
+            },
             decoration: InputDecoration(
               fillColor: Colors.white,
               hoverColor: Colors.transparent,
@@ -87,7 +80,6 @@ class _SearchItemViewState extends State<SearchItemView> {
                     search(controller);
                   },
                   child: Image.asset("assets/icons/search_icon.png")),
-              suffixIcon: Image.asset("assets/icons/search_with_voice.png"),
               hintText: 'ابحث عن الكلمات, الأبواب',
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(7.0),

@@ -1,4 +1,4 @@
-package com.example.almuarrab
+package com.gamadev.almuarrab
 
 import io.flutter.embedding.android.FlutterActivity
 

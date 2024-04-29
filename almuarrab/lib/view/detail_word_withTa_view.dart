@@ -1,10 +1,8 @@
 import 'package:almuarrab/viewModel/detail_word_view_withTo_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:get/get.dart';
-import 'package:html/parser.dart';
 
 class WordDetailView extends StatelessWidget {
   WordDetailView({super.key}) {
@@ -38,7 +36,6 @@ class WordDetailView extends StatelessWidget {
                         ),
                       ],
                     ),
-                   
                     Expanded(
                       child: SingleChildScrollView(
                         child: Padding(
@@ -140,8 +137,8 @@ class WordDetailView extends StatelessWidget {
                                               height: 2,
                                             ),
                                             Text(
-                                              viewModel.wordDate["origin"] ??
-                                                  "اصلها مفقود",
+                                               viewModel.wordDate["origin"]!="null" ? viewModel.wordDate["origin"]:
+                                                  "لم يذكر المؤلف أصلها",
                                               style: TextStyle(
                                                 fontSize: 20,
                                                 color: Colors.black54,
@@ -181,7 +178,8 @@ class WordDetailView extends StatelessWidget {
                                               height: 2,
                                             ),
                                             Text(
-                                              viewModel.wordDate["pagePresence"],
+                                              viewModel
+                                                  .wordDate["pagePresence"],
                                               style: TextStyle(
                                                   fontSize: 20,
                                                   color: Colors.black54),

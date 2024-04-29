@@ -118,7 +118,7 @@ class DBHelper {
     final db = await database;
     List<Map<String, dynamic>> results = await db.query(
       'entries', // Assuming 'entries' is the name of your table
-      columns: ['htmlText', 'pagePresence', 'origin'],
+      columns: ['htmlText', 'pagePresence','explanation', 'origin'],
       where: 'wordWithDiacritics = ?',
       whereArgs: [wordWithDiacritics],
     );
@@ -208,4 +208,5 @@ class DBHelper {
 
     return results;
   }
+
 }

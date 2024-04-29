@@ -38,9 +38,11 @@ class OriginsDictionaryWords extends StatelessWidget {
                       return InkWell(
                         onTap: () {
                           menuController.changeActiveItemTo(0);
-                          RouteArguments args = RouteArguments(
-                              viewModel.fetchedData[index]['origin'],
-                              viewModel.fetchedData[index]['origin']);
+                          String origin =
+                              viewModel.fetchedData[index]['origin'] == "null"
+                                  ? "لم يذكر المؤلف أصلها"
+                                  : viewModel.fetchedData[index]['origin'];
+                          RouteArguments args = RouteArguments(viewModel.fetchedData[index]['origin'], viewModel.fetchedData[index]['origin']);
                           navigationController.navigateTo(originWordsRout,
                               arg: args);
                         },
@@ -56,10 +58,15 @@ class OriginsDictionaryWords extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                "كلمات أصلها ${viewModel.fetchedData[index]['origin']}",
-                                style: TextStyle(fontSize: 20),
-                              ),
+                              viewModel.fetchedData[index]['origin'] == "null"
+                                  ? Text(
+                                      "لم يذكر المؤلف أصلها",
+                                      style: TextStyle(fontSize: 20),
+                                    )
+                                  : Text(
+                                      "كلمات أصلها ${viewModel.fetchedData[index]['origin']}",
+                                      style: TextStyle(fontSize: 20),
+                                    ),
                               SizedBox(
                                 height: 2,
                               ),

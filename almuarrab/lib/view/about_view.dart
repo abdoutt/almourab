@@ -8,187 +8,257 @@ class AboutView extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(8.0),
       margin: const EdgeInsets.only(top: 80.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(7), color: Colors.white),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10.0, vertical: 3),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "اسم الادبي",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 2,
-                        ),
-                        Text(
-                          "منصور الجواليقي",
-                          style: TextStyle(fontSize: 18, color: Colors.black54),
-                        ),
-                      ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7), color: Colors.white),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 3),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "عنوان الكتاب",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            "المعرّب من الكلام الأعجمي على حروف المعجم",
+                            style: TextStyle(fontSize: 18, color: Colors.black54),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(7), color: Colors.white),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10.0, vertical: 3),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "سنة الإصدار",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 2,
-                        ),
-                        Text(
-                          "2023",
-                          style: TextStyle(fontSize: 18, color: Colors.black54),
-                        ),
-                      ],
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7), color: Colors.white),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 3),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "المؤلف",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            "أبو منصور الجواليقي (465هـ-540هـ)",
+                            style: TextStyle(fontSize: 18, color: Colors.black54),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(7), color: Colors.white),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10.0, vertical: 3),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "دار النشر",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 2,
-                        ),
-                        Text(
-                          "دار الحكمة للنشر و الطباعة والتوزيع",
-                          style: TextStyle(fontSize: 18, color: Colors.black54),
-                        ),
-                      ],
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7), color: Colors.white),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 3),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "المحقق",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            "أحمد محمد شاكر",
+                            style: TextStyle(fontSize: 18, color: Colors.black54),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(7), color: Colors.white),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10.0, vertical: 3),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "نسخة التطبيق",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 2,
-                        ),
-                        Text(
-                          "1.0.0",
-                          style: TextStyle(fontSize: 18, color: Colors.black54),
-                        ),
-                      ],
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7), color: Colors.white),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 3),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "تاريخ الإصدار",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            "الطبعة الخامسة تاريخ الإصدار: 1441هـ/2020م",
+                            style: TextStyle(fontSize: 18, color: Colors.black54),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(7), color: Colors.white),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10.0, vertical: 3),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "البريد الإلكتروني للتواصل",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 2,
-                        ),
-                        Text(
-                          "contact@gmail.com",
-                          style: TextStyle(fontSize: 18, color: Colors.black54),
-                        ),
-                      ],
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7), color: Colors.white),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 3),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "دار النشر",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            "دار الكتب والوثائق القومية بالقاهرة",
+                            style: TextStyle(fontSize: 18, color: Colors.black54),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 25,
-          ),
-          Text(
-            "جميع حقوق الطبع والنشر محفوضة - 2023",
-            style: TextStyle(
-              fontSize: 18,
+            SizedBox(
+              height: 15,
             ),
-          )
-        ],
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7), color: Colors.white),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 3),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "نسخة التطبيق",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            "1.0.0+3",
+                            style: TextStyle(fontSize: 18, color: Colors.black54),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7), color: Colors.white),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 3),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "البريد الإلكتروني للتواصل",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            "merad.messaouda@gmail.com",
+                            style: TextStyle(fontSize: 18, color: Colors.black54),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Text(
+              "جميع حقوق الطبع والنشر محفوضة - 2023",
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
