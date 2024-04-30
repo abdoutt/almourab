@@ -15,7 +15,7 @@ class MenuController extends BaseGetxController {
   RxInt sousActiveItem = 0.obs;
   RxString initialRoute = ''.obs;
   RxInt hoverItem = 0.obs;
-
+  String filter="";
   @override
   void onInit() async {
     super.onInit();

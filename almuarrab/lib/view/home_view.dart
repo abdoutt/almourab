@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:almuarrab/constants/constants.dart';
 import 'package:almuarrab/constants/controllers.dart';
-import 'package:almuarrab/core/text_search_view.dart';
+import 'package:almuarrab/core/sercheStream.dart';
 import 'package:almuarrab/routing/routes.dart';
 import 'package:almuarrab/view/widgets/item_home_view.dart';
 import 'package:flutter/material.dart';

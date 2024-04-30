@@ -26,7 +26,7 @@ class _SearchItemViewState extends State<SearchItemView> {
   @override
   void initState() {
     super.initState();
-    _filter.text=menuController.filter;
+    _filter.text = menuController.filter;
     _filter.addListener(_onSearchChanged);
   }
 
@@ -39,41 +39,42 @@ class _SearchItemViewState extends State<SearchItemView> {
   }
 
   void _onSearchChanged() {
-  if (_debounce?.isActive ?? false) {
-    _debounce!.cancel();
-  }
-  _debounce = Timer(const Duration(milliseconds: 400), () async {
-    if (_filter.text.isNotEmpty) {
-      if (controller != null) {
-        controller!.open();
-        search(_filter.text); // Ensure that search is an asynchronous method
-      }
-    } else {
-      controller!.close();
-      _resultsController.add([]);
+    if (_debounce?.isActive ?? false) {
+      _debounce!.cancel();
     }
-  });
-}
+    _debounce = Timer(const Duration(milliseconds: 400), () async {
+      if (_filter.text.isNotEmpty) {
+        if (controller != null) {
+          controller!.open();
+          search(_filter.text); // Ensure that search is an asynchronous method
+        }
+      } else {
+        controller!.close();
+        _resultsController.add([]);
+      }
+    });
+  }
 
-void search(String searchTerm) async {
-  try {
-    var source = await DBHelper().searchDatabase(searchTerm);
-    List<RouteArguments> foundInColumnstemp = [];
-    for (var match in source) {
-      for (var column in match.keys) {
-        if (match[column].toString().contains(searchTerm) && !foundInColumnstemp.any((element) => element.title == column && element.body == match[column])) {
-          foundInColumnstemp.add(RouteArguments(column, match[column]));
+  void search(String searchTerm) async {
+    try {
+      var source = await DBHelper().searchDatabase(searchTerm);
+      List<RouteArguments> foundInColumnstemp = [];
+      for (var match in source) {
+        for (var column in match.keys) {
+          if (match[column].toString().contains(searchTerm) &&
+              !foundInColumnstemp.any((element) =>
+                  element.title == column && element.body == match[column])) {
+            foundInColumnstemp.add(RouteArguments(column, match[column]));
+          }
         }
       }
+      _resultsController
+          .add(foundInColumnstemp); // Update results via StreamController
+    } catch (e) {
+      // Handle exceptions, possibly log them or show an error message
+      print("Error during search: $e");
     }
-    _resultsController.add(foundInColumnstemp); // Update results via StreamController
-  } catch (e) {
-    // Handle exceptions, possibly log them or show an error message
-    print("Error during search: $e");
   }
-}
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -185,10 +186,10 @@ void search(String searchTerm) async {
                       width: MediaQuery.of(context).size.width,
                       padding: EdgeInsets.all(10),
                       child: Center(
-                      child: SpinKitCircle(
-                    color: Colors.amber,
-                    size: 30.0,
-                  )));
+                          child: SpinKitCircle(
+                        color: Colors.amber,
+                        size: 30.0,
+                      )));
                 } else {
                   return Container(
                       width: MediaQuery.of(context).size.width,
