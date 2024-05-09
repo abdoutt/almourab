@@ -62,7 +62,7 @@ class BrowseDictionary extends StatelessWidget {
                     ),
                     ItemHome(
                       imageItem: "assets/icons/browse_icon2.png",
-                      title: "ابواب المعجم",
+                      title: "أبواب المعجم",
                       color: primaryColor,
                       tapfunction: () {
                         menuController.goToPage(getRoutName(1), 1, context);

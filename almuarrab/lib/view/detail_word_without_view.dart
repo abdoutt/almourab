@@ -15,7 +15,7 @@ class WordDetailWithoutView extends StatelessWidget {
     viewModel.setContext(context);
     return Container(
       padding: const EdgeInsets.all(8.0),
-      margin: const EdgeInsets.only(top: 20.0),
+      margin: const EdgeInsets.only(top: 25.0),
       child: Obx(() => viewModel.isBusy.value
           ? Center(
               child: SpinKitCircle(
@@ -38,7 +38,7 @@ class WordDetailWithoutView extends StatelessWidget {
                           ),
                         ],
                       ),
-                     
+                     SizedBox(height: 8,),
                       Expanded(
                         child: SingleChildScrollView(
                           child: Column(

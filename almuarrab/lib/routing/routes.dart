@@ -190,7 +190,7 @@ String getTitleHeader(int index, String? rout) {
     case 2:
       return "حول";
     case 3:
-      return "اصول كلمات المعجم";
+      return "أصول كلمات المعجم";
     case 4:
       return "مقدمة المعجم";
     case 5:
@@ -205,12 +205,13 @@ String getTitleHeader(int index, String? rout) {
       return "باب ما يُعرف من المعرب بإتلاف الحروف";
     case 10:
       return "";
-
+    case 13:
+      return "";
     case 11:
       return "وصف المعجم";
     case 12:
       return "التعريف بصاحب المعجم";
     default:
-      return 'الرئيسية';
+      return '';
   }
 }

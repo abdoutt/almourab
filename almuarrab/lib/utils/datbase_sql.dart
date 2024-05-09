@@ -1,3 +1,4 @@
+import 'package:almuarrab/constants/constants.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -27,7 +28,6 @@ class DBHelper {
             explanation TEXT,
             htmlText TEXT,
             origin TEXT,
-            notes TEXT,
             pagePresence TEXT
           )
         ''');
@@ -49,11 +49,40 @@ class DBHelper {
 
   static Future<List<Map<String, dynamic>>> getChaptersAndCounts() async {
     final db = await database;
-    final List<Map<String, dynamic>> result = await db.rawQuery('''
+      final List<Map<String, dynamic>> result = await db.rawQuery('''
       SELECT chapter, COUNT(*) as count
       FROM entries
-      where chapter !="null"
+      WHERE chapter != "null"
       GROUP BY chapter
+      ORDER BY CASE chapter
+        WHEN 'باب الألف' THEN 1
+        WHEN 'باب الباء' THEN 2
+        WHEN 'باب التاء' THEN 3
+        WHEN 'باب الثاء' THEN 4
+        WHEN 'باب الجيم' THEN 5
+        WHEN 'باب الحاء' THEN 6
+        WHEN 'باب الخاء' THEN 7
+        WHEN 'باب الدال' THEN 8
+        WHEN 'باب الذال' THEN 9
+        WHEN 'باب الراء' THEN 10
+        WHEN 'باب الزاي' THEN 11
+        WHEN 'باب السين' THEN 12
+        WHEN 'باب الشين' THEN 13
+        WHEN 'باب الصاد' THEN 14
+        WHEN 'باب الطاء' THEN 15
+        WHEN 'باب العين' THEN 16
+        WHEN 'باب الغين' THEN 17
+        WHEN 'باب الفاء' THEN 18
+        WHEN 'باب القاف' THEN 19
+        WHEN 'باب الكاف' THEN 20
+        WHEN 'باب اللام' THEN 21
+        WHEN 'باب الميم' THEN 22
+        WHEN 'باب النون' THEN 23
+        WHEN 'باب الواو' THEN 24
+        WHEN 'باب الهاء' THEN 25
+        WHEN 'باب الياء' THEN 26
+        ELSE 27
+      END
     ''');
     return result;
   }
@@ -131,7 +160,7 @@ class DBHelper {
     final db = await database;
     List<Map<String, dynamic>> results = await db.query(
       'entries', // Assuming 'entries' is the name of your table
-      columns: ['htmlText', 'pagePresence', 'origin'],
+      columns: ['htmlText','explanation', 'pagePresence', 'origin'],
       where: 'wordWithoutDiacritics = ?',
       whereArgs: [wordWithoutDiacritics],
     );
@@ -199,7 +228,7 @@ class DBHelper {
 
     // Use rawQuery with parameterized inputs, specifying only the desired columns in the SELECT part.
     String rawQuery =
-        'SELECT $columnsForSelect FROM entries WHERE $whereClause';
+        'SELECT $columnsForSelect FROM entries WHERE $whereClause LIMIT 100';
 
     List<Map<String, dynamic>> results = await db.rawQuery(
       rawQuery,
@@ -209,4 +238,32 @@ class DBHelper {
     return results;
   }
 
+  Future<List<Map<String, dynamic>>> searchDatabaseFull(String searchTerm) async {
+  final db = await database; // تأكد من أن هذا هو الكائن الصحيح لقاعدة البيانات
+
+  // تطبيع مصطلح البحث
+  String normalizedSearchTerm = normalizeArabic(searchTerm);
+
+  // استرجاع جميع السجلات
+  String query = "SELECT  chapter,wordWithoutDiacritics, wordWithDiacritics,origin,pagePresence FROM entries";
+  List<Map<String, dynamic>> results = await db.rawQuery(query);
+
+  // تطبيع البيانات وفلترتها
+  List<Map<String, dynamic>> filteredResults = [];
+  for (var row in results) {
+    bool matches = row.entries.any((element) {
+      String normalizedValue = normalizeArabic(element.value.toString());
+      return normalizedValue.contains(normalizedSearchTerm);
+    });
+    if (matches) {
+      filteredResults.add(row);
+    }
+  }
+
+  return filteredResults;
 }
+
+
+}
+
+

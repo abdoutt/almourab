@@ -46,16 +46,15 @@ class MenuController extends BaseGetxController {
         continue;
       }
       // Map the row to the corresponding database fields
-      String? refrence = row[1]?.value.toString() ?? "";
+      String? refrence = row[1]?.value.toString().trim() ?? "";
       int number = 0;
-      String? chapter = row[3]?.value.toString() ?? "";
-      String? wordWithoutDiacritics = row[4]?.value.toString() ?? "";
-      String? wordWithDiacritics = row[5]?.value.toString() ?? "";
-      String? explanation = row[6]?.value.toString() ?? "";
-      String? htmlText = row[7]?.value.toString() ?? "";
-      String? origin = row[8]?.value.toString() ?? "";
-      String? notes = row[9]?.value.toString() ?? "";
-      String? pagePresence = row[10]?.value.toString() ?? "";
+      String? chapter = row[3]?.value.toString().trim() ?? "";
+      String? wordWithoutDiacritics = row[4]?.value.toString().trim() ?? "";
+      String? wordWithDiacritics = row[5]?.value.toString().trim() ?? "";
+      String? explanation = row[6]?.value.toString().trim() ?? "";
+      String? htmlText = row[7]?.value.toString().trim() ?? "";
+      String? origin = row[8]?.value.toString().trim() ?? "";
+      String? pagePresence = row[9]?.value.toString() ?? "";
       Map<String, dynamic> entry = {
         "reference": refrence,
         "number": number,
@@ -65,7 +64,6 @@ class MenuController extends BaseGetxController {
         "explanation": explanation,
         "htmlText": htmlText,
         "origin": origin,
-        "notes": notes,
         "pagePresence": pagePresence
       };
 

@@ -21,12 +21,9 @@ class _SearchItemViewState extends State<SearchItemView> {
   Timer? _debounce;
   MenuController? controller;
 
-  List<RouteArguments> _searchResults = [];
-
   @override
   void initState() {
     super.initState();
-    _filter.text=menuController.filter;
     _filter.addListener(_onSearchChanged);
   }
 
@@ -39,41 +36,44 @@ class _SearchItemViewState extends State<SearchItemView> {
   }
 
   void _onSearchChanged() {
-  if (_debounce?.isActive ?? false) {
-    _debounce!.cancel();
-  }
-  _debounce = Timer(const Duration(milliseconds: 400), () async {
-    if (_filter.text.isNotEmpty) {
-      if (controller != null) {
-        controller!.open();
-        search(_filter.text); // Ensure that search is an asynchronous method
-      }
-    } else {
-      controller!.close();
-      _resultsController.add([]);
+    if (_debounce?.isActive ?? false) {
+      _debounce!.cancel();
     }
-  });
-}
+    _debounce = Timer(const Duration(milliseconds: 300), () async {
+      if (_filter.text.isNotEmpty) {
+        if (controller != null) {
+          controller!.open();
+          await search(_filter.text);
+        }
+      } else {
+        controller!.close();
+        _resultsController.add([]);
+      }
+    });
+  }
 
-void search(String searchTerm) async {
-  try {
-    var source = await DBHelper().searchDatabase(searchTerm);
-    List<RouteArguments> foundInColumnstemp = [];
-    for (var match in source) {
-      for (var column in match.keys) {
-        if (match[column].toString().contains(searchTerm) && !foundInColumnstemp.any((element) => element.title == column && element.body == match[column])) {
-          foundInColumnstemp.add(RouteArguments(column, match[column]));
+  Future search(String searchTerm) async {
+    try {
+      var source = await DBHelper().searchDatabaseFull(searchTerm);
+      List<RouteArguments> foundInColumnstemp = [];
+      for (var match in source) {
+        for (var column in match.keys) {
+          String valMAtch = normalizeArabic(match[column].toString());
+           String normalizedSearchTerm = normalizeArabic(searchTerm);
+          if (valMAtch.contains(normalizedSearchTerm) &&
+              !foundInColumnstemp.any((element) =>
+                  element.title == column && element.body == match[column])) {
+            foundInColumnstemp.add(RouteArguments(column, match[column]));
+          }
         }
       }
+      _resultsController
+          .add(foundInColumnstemp); // Update results via StreamController
+    } catch (e) {
+      // Handle exceptions, possibly log them or show an error message
+      print("Error during search: $e");
     }
-    _resultsController.add(foundInColumnstemp); // Update results via StreamController
-  } catch (e) {
-    // Handle exceptions, possibly log them or show an error message
-    print("Error during search: $e");
   }
-}
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -97,10 +97,10 @@ void search(String searchTerm) async {
               hintStyle: const TextStyle(color: Colors.black87, fontSize: 15),
               prefixIcon: InkWell(
                   onTap: () {
-                    //search(controller);
+                    _onSearchChanged();
                   },
                   child: Image.asset("assets/icons/search_icon.png")),
-              hintText: 'ابحث عن الكلمات, الأبواب',
+              hintText: 'ابحث عن الكلمات ، الأبواب',
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(7.0),
                 borderSide: BorderSide(
@@ -122,6 +122,9 @@ void search(String searchTerm) async {
                     width: 0.0,
                   )),
             ),
+            onSubmitted: (val) {
+              _onSearchChanged();
+            },
             keyboardType: TextInputType.text,
             style: const TextStyle(fontSize: 18),
             autocorrect: false,
@@ -133,12 +136,13 @@ void search(String searchTerm) async {
               stream: _resultsController.stream,
               builder: (context, snapshot) {
                 if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+                  int lenglist=snapshot.data!.length>100?100:snapshot.data!.length;
                   return SizedBox(
                       height: 260,
                       width: MediaQuery.of(context).size.width,
                       child: SingleChildScrollView(
                           child: Column(children: [
-                        for (int i = 0; i < snapshot.data!.length; i++)
+                        for (int i = 0; i < lenglist; i++)
                           ListTile(
                               title: Text(snapshot.data![i].body),
                               onTap: () {
@@ -185,10 +189,10 @@ void search(String searchTerm) async {
                       width: MediaQuery.of(context).size.width,
                       padding: EdgeInsets.all(10),
                       child: Center(
-                      child: SpinKitCircle(
-                    color: Colors.amber,
-                    size: 30.0,
-                  )));
+                          child: SpinKitCircle(
+                        color: Colors.amber,
+                        size: 30.0,
+                      )));
                 } else {
                   return Container(
                       width: MediaQuery.of(context).size.width,

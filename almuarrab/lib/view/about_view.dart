@@ -252,7 +252,7 @@ class AboutView extends StatelessWidget {
               height: 25,
             ),
             Text(
-              "جميع حقوق الطبع والنشر محفوضة - 2023",
+              "جميع حقوق الطبع والنشر محفوظة 2023 / 2024",
               style: TextStyle(
                 fontSize: 18,
               ),

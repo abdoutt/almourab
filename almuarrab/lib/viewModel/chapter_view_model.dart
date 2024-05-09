@@ -9,12 +9,15 @@ class ChapterViewModel extends BaseGetxController {
   RxList<Map<String, dynamic>> wordsOrigine = <Map<String, dynamic>>[].obs;
   RxString origin = "الكل".obs;
   RouteArguments? args;
+
   setContext(BuildContext cont) async {
+   
     args = ModalRoute.of(cont)!.settings.arguments as RouteArguments;
     if (args == null) {
       return;
     }
     origin.value = "الكل";
+     await Future.delayed(const Duration(milliseconds: 100), () {});
     int totalCount = await DBHelper().getTotalCountByChapter(args!.title);
     List<Map<String, dynamic>> fetchedData =
         await DBHelper().getOriginCountsByChapter(args!.title);

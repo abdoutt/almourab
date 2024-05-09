@@ -2,7 +2,6 @@ import 'dart:typed_data';
 
 import 'package:almuarrab/constants/constants.dart';
 import 'package:almuarrab/constants/controllers.dart';
-import 'package:almuarrab/core/sercheStream.dart';
 import 'package:almuarrab/routing/routes.dart';
 import 'package:almuarrab/view/widgets/item_home_view.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +9,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_file_saver/flutter_file_saver.dart';
 import 'package:get/get.dart';
 
+import 'package:almuarrab/core/text_search_view.dart';
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -62,7 +62,7 @@ class _HomeViewState extends State<HomeView> {
                     ),
                     ItemHome(
                       imageItem: "assets/icons/words_origins_icon2.png",
-                      title: "اصول كلمات المعجم",
+                      title: "أصول كلمات المعجم",
                       color: primaryColor,
                       tapfunction: () {
                         menuController.goToPage(getRoutName(3), 0, context);

@@ -8,7 +8,7 @@ package="com.gamadev.almuarrab">
     <uses-permission android:name="Manifest.permission.CAPTURE_AUDIO_OUTPUT" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
    <application
-        android:label="almuarrab"
+        android:label="معجم المعرّب للجواليقي"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

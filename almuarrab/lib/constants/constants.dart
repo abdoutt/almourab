@@ -101,8 +101,6 @@ String getStatusString(String value) {
       return "شرحها";
     case "origin":
       return "أصلها";
-    case "notes":
-      return "اضافة";
     case "pagePresence":
       return "صفحة تواجدها";
 
@@ -118,4 +116,13 @@ Future<void> requestPermissions() async {
   }
 }
 
+String normalizeArabic(String text) {
+ 
+  // توحيد أشكال الألف
+  text = text.replaceAll(RegExp(r'[أإآ]'), 'ا');
 
+  // إزالة 'ال' في بداية الكلمات
+  text = text.replaceAll(RegExp(r'\bال'), '');
+
+  return text;
+}

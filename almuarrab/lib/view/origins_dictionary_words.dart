@@ -38,10 +38,7 @@ class OriginsDictionaryWords extends StatelessWidget {
                       return InkWell(
                         onTap: () {
                           menuController.changeActiveItemTo(0);
-                          String origin =
-                              viewModel.fetchedData[index]['origin'] == "null"
-                                  ? "لم يذكر المؤلف أصلها"
-                                  : viewModel.fetchedData[index]['origin'];
+                         
                           RouteArguments args = RouteArguments(viewModel.fetchedData[index]['origin'], viewModel.fetchedData[index]['origin']);
                           navigationController.navigateTo(originWordsRout,
                               arg: args);
@@ -58,9 +55,9 @@ class OriginsDictionaryWords extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              viewModel.fetchedData[index]['origin'] == "null"
+                              viewModel.fetchedData[index]['origin'] == "لم يذكر المؤلف أصلها"
                                   ? Text(
-                                      "لم يذكر المؤلف أصلها",
+                                      "كلمات لم يذكر المؤلف أصلها",
                                       style: TextStyle(fontSize: 20),
                                     )
                                   : Text(
@@ -71,7 +68,7 @@ class OriginsDictionaryWords extends StatelessWidget {
                                 height: 2,
                               ),
                               Text(
-                                "${viewModel.fetchedData[index]['count']} كلمة",
+                               viewModel.fetchedData[index]['count']==2?"${viewModel.fetchedData[index]['count']} كلمتان ":viewModel.fetchedData[index]['count']>10 ||viewModel.fetchedData[index]['count']==1 ?"${viewModel.fetchedData[index]['count']} كلمة":"${viewModel.fetchedData[index]['count']} كلمات",
                                 style: TextStyle(
                                     fontSize: 20, color: Colors.black87),
                               ),
