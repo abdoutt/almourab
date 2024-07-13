@@ -17,7 +17,6 @@ class ChapterViewModel extends BaseGetxController {
       return;
     }
     origin.value = "الكل";
-     await Future.delayed(const Duration(milliseconds: 100), () {});
     int totalCount = await DBHelper().getTotalCountByChapter(args!.title);
     List<Map<String, dynamic>> fetchedData =
         await DBHelper().getOriginCountsByChapter(args!.title);
