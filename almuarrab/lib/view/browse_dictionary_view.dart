@@ -51,7 +51,7 @@ class BrowseDictionary extends StatelessWidget {
                     ),
                     ItemHome(
                       imageItem: "assets/icons/browse_icon2.png",
-                      title: "باب ما يُعرف من المعرب بإتلاف الحروف",
+                      title: "باب ما يُعرف من المعرّب بائتلاف الحروف",
                       color: primaryColor,
                       tapfunction: () {
                         menuController.goToPage(getRoutName(9), 0, context);

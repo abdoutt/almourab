@@ -120,15 +120,15 @@ String getRoutName(int routeIndex) {
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case aboutRoute:
-      return _getPageRoute(AboutView(), settings);
+      return _getPageRoute(const AboutView(), settings);
     case homeRoute:
-      return _getPageRoute(HomeView(), settings);
+      return _getPageRoute(const HomeView(), settings);
     case searchPort:
       return _getPageRoute(SearchPortView(), settings);
     case originsDictionaryWords:
       return _getPageRoute(OriginsDictionaryWords(), settings);
     case introductionDictionaryRout:
-      return _getPageRoute(IntroductionDictionary(), settings);
+      return _getPageRoute(const IntroductionDictionary(), settings);
     case chapterRout:
       return _getPageRoute(ChapterView(), settings);
     case detailWordRout:
@@ -136,29 +136,33 @@ Route<dynamic> generateRoute(RouteSettings settings) {
        case detailWordOutRout:
       return _getPageRoute(WordDetailWithoutView(), settings);
     case browseDictionary:
-      return _getPageRoute(BrowseDictionary(), settings);
+      return _getPageRoute(const BrowseDictionary(), settings);
 
     case introductionDictionaryPortRout:
-      return _getPageRoute(IntroductionDictionaryPort(), settings);
+      return _getPageRoute(const IntroductionDictionaryPort(), settings);
     case introductionDictionaryLetterRout:
-      return _getPageRoute(IntroductionDictionaryLetter(), settings);
+      return _getPageRoute(const IntroductionDictionaryLetter(), settings);
     case originWordsRout:
       return _getPageRoute(DetailWordOriginView(), settings);
 
     case descriptionDictinaryRout:
-      return _getPageRoute(DescriptionDictionary(), settings);
+      return _getPageRoute(const DescriptionDictionary(), settings);
     case auteurDictionaryRout:
-      return _getPageRoute(AuteurDictionary(), settings);
+      return _getPageRoute(const AuteurDictionary(), settings);
 
     default:
-      return _getPageRoute(HomeView(), settings);
+      return _getPageRoute(const HomeView(), settings);
   }
 }
 
 PageRoute _getPageRoute(Widget child, RouteSettings rout) {
   return PageRouteBuilder(
+    //opaque:false ,
+     allowSnapshotting: false,
+     reverseTransitionDuration:  Duration(milliseconds: 0),
+     maintainState:false ,
       pageBuilder: (_, __, ___) => child,
-      transitionDuration: const Duration(seconds: 0),
+      transitionDuration: const Duration(milliseconds: 0),
       settings: rout);
 }
 
@@ -202,7 +206,7 @@ String getTitleHeader(int index, String? rout) {
     case 8:
       return "باب معرفة مذاهب العرب في الاستعمال الأعجمي";
     case 9:
-      return "باب ما يُعرف من المعرب بإتلاف الحروف";
+      return "باب ما يُعرف من المعرّب بائتلاف الحروف";
     case 10:
       return "";
     case 13:

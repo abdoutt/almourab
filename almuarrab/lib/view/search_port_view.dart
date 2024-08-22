@@ -24,11 +24,10 @@ class SearchPortView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8.0),
-      margin:  const EdgeInsets.only(top: 80.0),
-      
+      margin: const EdgeInsets.only(top: 80.0),
       child: Column(
         children: [
-            SearchItemView(),
+          SearchItemView(),
           SizedBox(
             height: 20,
           ),
@@ -85,7 +84,9 @@ class SearchPortView extends StatelessWidget {
                                               child: Text(
                                                 getChapterString(
                                                     snapshot.data![i].chapter),
-                                                style: TextStyle(fontSize: 35, color: primaryColor),
+                                                style: TextStyle(
+                                                    fontSize: 35,
+                                                    color: primaryColor),
                                                 textAlign: TextAlign.center,
                                               ),
                                             ),

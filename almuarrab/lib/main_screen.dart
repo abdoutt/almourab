@@ -29,10 +29,14 @@ class Layout extends StatelessWidget {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
           child: WillPopScope(
+            
               onWillPop: () async {
                 if (navigationController.navigatorKey.currentState!.canPop()) {
-                  navigationController.navigatorKey.currentState!.pop();
+                
+                     
+                      
                   navigationController.titlesStack.removeLast();
+                  
                   if (navigationController.titlesStack.isNotEmpty) {
                     navigationController.pageTitle.value =
                         navigationController.titlesStack.last;
@@ -44,11 +48,15 @@ class Layout extends StatelessWidget {
                     menuController.changeActiveItemTo(
                         getRoutIndex(navigationController.pageTitle.value));
                   }
+                      navigationController.navigatorKey.currentState!.popUntil(ModalRoute.withName(navigationController.pageTitle.value));
+                                  
+
                   return false; // Prevent default back button behavior
                 }
                 return true; // Exit app if no navigation history is present
               },
               child: localNavigator(routeName))),
+              
       bottomNavigationBar: Obx(() => BottomNavigationBar(
             items: getMenuRole()
                 .map(

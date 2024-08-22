@@ -8,19 +8,63 @@ class AboutView extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(8.0),
       margin: const EdgeInsets.only(top: 80.0),
+      decoration: const BoxDecoration(color:Colors.transparent,  ),
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+              Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7), color: Colors.white),
-              child: Row(
+              child: const Row(
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 3),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                            Text(
+                            "جامعة حمه الأخضر -الوادي-",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                           SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            "الطالبة : مراد مسعودة",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                           Text(
+                            "المشرف  :الأستاذ الدكتور محمد بن يحي",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          
+                         
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7), color: Colors.white),
+              child: const Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 3),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -44,17 +88,17 @@ class AboutView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7), color: Colors.white),
-              child: Row(
+              child: const Row(
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
+                      padding: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 3),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -78,17 +122,17 @@ class AboutView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7), color: Colors.white),
-              child: Row(
+              child: const Row(
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
+                      padding: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 3),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -112,17 +156,17 @@ class AboutView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7), color: Colors.white),
-              child: Row(
+              child: const Row(
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
+                      padding: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 3),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -146,17 +190,17 @@ class AboutView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7), color: Colors.white),
-              child: Row(
+              child: const Row(
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
+                      padding: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 3),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -180,17 +224,17 @@ class AboutView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7), color: Colors.white),
-              child: Row(
+              child: const Row(
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
+                      padding: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 3),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -214,17 +258,17 @@ class AboutView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7), color: Colors.white),
-              child: Row(
+              child: const Row(
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
+                      padding: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 3),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -248,10 +292,12 @@ class AboutView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+          
+            
+            const SizedBox(
               height: 25,
             ),
-            Text(
+            const Text(
               "جميع حقوق الطبع والنشر محفوظة 2023 / 2024",
               style: TextStyle(
                 fontSize: 18,

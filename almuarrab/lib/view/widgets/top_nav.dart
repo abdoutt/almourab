@@ -41,6 +41,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
                         },
                         child: Image.asset(
                           "assets/icons/go_back.png",
+                          width: 50,
                         ),
                       )
                     : const SizedBox(),

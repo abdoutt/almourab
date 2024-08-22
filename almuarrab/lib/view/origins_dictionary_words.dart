@@ -1,6 +1,7 @@
 import 'package:almuarrab/core/text_search_view.dart';
 import 'package:almuarrab/routing/routes.dart';
 import 'package:almuarrab/viewModel/origins_dictionary_words_view_model.dart';
+import 'package:almuarrab/viewModel/word_origin_detail_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
@@ -21,9 +22,9 @@ class OriginsDictionaryWords extends StatelessWidget {
       margin: const EdgeInsets.only(top: 80.0),
       child: Column(
         children: [
-          SearchItemView(),
+          const SearchItemView(),
           Obx(() => viewModel.isBusy.value
-              ? Expanded(
+              ? const Expanded(
                   child: Center(
                       child: SpinKitCircle(
                     color: Colors.amber,
@@ -38,15 +39,15 @@ class OriginsDictionaryWords extends StatelessWidget {
                       return InkWell(
                         onTap: () {
                           menuController.changeActiveItemTo(0);
-                         
+                         Get.delete<DetailWordOriginViewModel>();
                           RouteArguments args = RouteArguments(viewModel.fetchedData[index]['origin'], viewModel.fetchedData[index]['origin']);
                           navigationController.navigateTo(originWordsRout,
                               arg: args);
                         },
                         child: Container(
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           margin:
-                              EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                              const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white,
@@ -56,20 +57,20 @@ class OriginsDictionaryWords extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               viewModel.fetchedData[index]['origin'] == "لم يذكر المؤلف أصلها"
-                                  ? Text(
+                                  ? const Text(
                                       "كلمات لم يذكر المؤلف أصلها",
                                       style: TextStyle(fontSize: 20),
                                     )
                                   : Text(
                                       "كلمات أصلها ${viewModel.fetchedData[index]['origin']}",
-                                      style: TextStyle(fontSize: 20),
+                                      style: const TextStyle(fontSize: 20),
                                     ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 2,
                               ),
                               Text(
                                viewModel.fetchedData[index]['count']==2?"${viewModel.fetchedData[index]['count']} كلمتان ":viewModel.fetchedData[index]['count']>10 ||viewModel.fetchedData[index]['count']==1 ?"${viewModel.fetchedData[index]['count']} كلمة":"${viewModel.fetchedData[index]['count']} كلمات",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 20, color: Colors.black87),
                               ),
                             ],
