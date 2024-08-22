@@ -28,21 +28,21 @@ class AboutView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                             Text(
-                            "جامعة حمه الأخضر -الوادي-",
+                            "جامعة الشهيد حمه لخضر - الوادي-الجزائر",
                             style: TextStyle(fontSize: 18),
                           ),
                            SizedBox(
                             height: 2,
                           ),
                           Text(
-                            "الطالبة : مراد مسعودة",
+                            "الطالبة: مسعودة مراد",
                             style: TextStyle(fontSize: 18),
                           ),
                           SizedBox(
                             height: 2,
                           ),
                            Text(
-                            "المشرف  :الأستاذ الدكتور محمد بن يحي",
+                            "المشرف: الأستاذ الدكتور محمد بن يحي",
                             style: TextStyle(fontSize: 18),
                           ),
                           
