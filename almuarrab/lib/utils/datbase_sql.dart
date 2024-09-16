@@ -49,7 +49,7 @@ class DBHelper {
 
   static Future<List<Map<String, dynamic>>> getChaptersAndCounts() async {
     final db = await database;
-      final List<Map<String, dynamic>> result = await db.rawQuery('''
+    final List<Map<String, dynamic>> result = await db.rawQuery('''
       SELECT chapter, COUNT(*) as count
       FROM entries
       WHERE chapter != "null"
@@ -147,7 +147,7 @@ class DBHelper {
     final db = await database;
     List<Map<String, dynamic>> results = await db.query(
       'entries', // Assuming 'entries' is the name of your table
-      columns: ['htmlText', 'pagePresence','explanation', 'origin'],
+      columns: ['htmlText', 'pagePresence', 'explanation', 'origin'],
       where: 'wordWithDiacritics = ?',
       whereArgs: [wordWithDiacritics],
     );
@@ -155,12 +155,12 @@ class DBHelper {
     return results; // This list may contain multiple entries if the word occurs more than once with different origins
   }
 
-    Future<List<Map<String, dynamic>>> getDetailsByWordWithOutDiacritics(
+  Future<List<Map<String, dynamic>>> getDetailsByWordWithOutDiacritics(
       String wordWithoutDiacritics) async {
     final db = await database;
     List<Map<String, dynamic>> results = await db.query(
       'entries', // Assuming 'entries' is the name of your table
-      columns: ['htmlText','explanation', 'pagePresence', 'origin'],
+      columns: ['htmlText', 'explanation', 'pagePresence', 'origin'],
       where: 'wordWithoutDiacritics = ?',
       whereArgs: [wordWithoutDiacritics],
     );
@@ -238,32 +238,31 @@ class DBHelper {
     return results;
   }
 
-  Future<List<Map<String, dynamic>>> searchDatabaseFull(String searchTerm) async {
-  final db = await database; // تأكد من أن هذا هو الكائن الصحيح لقاعدة البيانات
+  Future<List<Map<String, dynamic>>> searchDatabaseFull(
+      String searchTerm) async {
+    final db =
+        await database; // تأكد من أن هذا هو الكائن الصحيح لقاعدة البيانات
 
-  // تطبيع مصطلح البحث
-  String normalizedSearchTerm = normalizeArabic(searchTerm);
+    // تطبيع مصطلح البحث
+    String normalizedSearchTerm = normalizeArabic(searchTerm);
 
-  // استرجاع جميع السجلات
-  String query = "SELECT  chapter,wordWithoutDiacritics, wordWithDiacritics,origin,pagePresence FROM entries";
-  List<Map<String, dynamic>> results = await db.rawQuery(query);
+    // استرجاع جميع السجلات
+    String query =
+        "SELECT  chapter,wordWithoutDiacritics, wordWithDiacritics,origin,pagePresence FROM entries";
+    List<Map<String, dynamic>> results = await db.rawQuery(query);
 
-  // تطبيع البيانات وفلترتها
-  List<Map<String, dynamic>> filteredResults = [];
-  for (var row in results) {
-    bool matches = row.entries.any((element) {
-      String normalizedValue = normalizeArabic(element.value.toString());
-      return normalizedValue.contains(normalizedSearchTerm);
-    });
-    if (matches) {
-      filteredResults.add(row);
+    // تطبيع البيانات وفلترتها
+    List<Map<String, dynamic>> filteredResults = [];
+    for (var row in results) {
+      bool matches = row.entries.any((element) {
+        String normalizedValue = normalizeArabic(element.value.toString());
+        return normalizedValue.contains(normalizedSearchTerm);
+      });
+      if (matches) {
+        filteredResults.add(row);
+      }
     }
+
+    return filteredResults;
   }
-
-  return filteredResults;
 }
-
-
-}
-
-

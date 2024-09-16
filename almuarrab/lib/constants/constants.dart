@@ -121,6 +121,9 @@ String normalizeArabic(String text) {
   // توحيد أشكال الألف
   text = text.replaceAll(RegExp(r'[أإآ]'), 'ا');
 
+  text = text.replaceAll(RegExp(r'[إٔ]'), 'ا');
+    text = text.replaceAll(RegExp(r'[ًٍُِّْ]'), ''); 
+
   // إزالة 'ال' في بداية الكلمات
   text = text.replaceAll(RegExp(r'\bال'), '');
 
