@@ -2,7 +2,7 @@ import 'package:almuarrab/constants/controllers.dart';
 import 'package:almuarrab/core/base_getx_controller.dart';
 import 'package:almuarrab/utils/datbase_sql.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_share/flutter_share.dart';
+import 'package:share_plus/share_plus.dart';
 
 class DetailWordWithoutViewModel extends BaseGetxController {
   late String word;
@@ -30,11 +30,10 @@ class DetailWordWithoutViewModel extends BaseGetxController {
   }
 
   Future<void> share() async {
-    await FlutterShare.share(
-      title: "${"الكلمة" "\n" + args!.title}",
+ SharePlus.instance.share(ShareParams(      title: "${"الكلمة" "\n" + args!.title}",
       text:
           "${"الكلمة" "\n" + args!.title + "\n" + "\n" + wordDate["explanation"] + "\n" + "\n" + "أصل الكلمة" + "\n" + wordDate["origin"]}\n\nصفحة تواجدها\n" +
               wordDate["pagePresence"],
-    );
+    ));
   }
 }

@@ -28,7 +28,14 @@ class AboutView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                             Text(
-                            "جامعة الشهيد حمه لخضر - الوادي-الجزائر",
+                            "كلي جامعة الشهيد حمه لخضر - الوادي-الجزائر",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                             SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            "كلية الأداب و اللغات - أطروحة دكتوراة ",
                             style: TextStyle(fontSize: 18),
                           ),
                            SizedBox(

@@ -2,7 +2,7 @@ import 'package:almuarrab/constants/controllers.dart';
 import 'package:almuarrab/core/base_getx_controller.dart';
 import 'package:almuarrab/utils/datbase_sql.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_share/flutter_share.dart';
+import 'package:share_plus/share_plus.dart';
 
 class DetailWordViewModel extends BaseGetxController {
   late String word;
@@ -10,7 +10,7 @@ class DetailWordViewModel extends BaseGetxController {
   late Map<String, dynamic> wordDate;
   RouteArguments? args;
   setContext(BuildContext cont) async {
-     isBusy.value = true;
+    isBusy.value = true;
     wordDate = {};
     args = ModalRoute.of(cont)!.settings.arguments as RouteArguments;
     if (args == null) {
@@ -30,11 +30,11 @@ class DetailWordViewModel extends BaseGetxController {
   }
 
   Future<void> share() async {
-    await FlutterShare.share(
+    SharePlus.instance.share(ShareParams(
       title: "${"الكلمة" "\n" + args!.title}",
       text:
           "${"الكلمة" "\n" + args!.title + "\n" + "\n" + wordDate["explanation"] + "\n" + "\n" + "أصل الكلمة" + "\n" + wordDate["origin"]}\n\nصفحة تواجدها\n" +
               wordDate["pagePresence"],
-    );
+    ));
   }
 }
